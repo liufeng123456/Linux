@@ -1,0 +1,73 @@
+<html>
+<head>
+  <title>Linux基础指令</title>
+  <basefont face="微软雅黑" size="2" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="exporter-version" content="YXBJ Windows/600667 (zh-CN, DDL); Windows/10.0.0 (Win64);"/>
+  <meta name="content-class" content="yinxiang.markdown"/>
+  <style>
+    body, td {
+      font-family: 微软雅黑;
+      font-size: 10pt;
+    }
+  </style>
+</head>
+<body>
+<a name="430"/>
+<h1>Linux基础指令</h1>
+
+<div><span><div style="font-size: 14px; margin: 0; padding: 0; width: 100%;"><h1 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 41px; border-bottom: 3px double #999; color: #000; margin-top: 14px;">Linux基础指令</h1>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;"><strong style="line-height: 160%; box-sizing: content-box; font-weight: 700;">Linux权限管理</strong>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333; margin-top: 0; margin-bottom: 0;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">
+<p style="line-height: 160%; box-sizing: content-box; color: #333; margin: 0;">文件权限：</p>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333; margin-top: 0; margin-bottom: 0;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">文件操作分用户：文件所有者user，文件所属组group,   其他用户other;</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">对用户分操作：
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333; margin-top: 0; margin-bottom: 0;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">对普通文件：可读：r   可写：w   可执行：x</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">对目录：可浏览：r    可创建：w  可进入：x<br/>
+例如： drwxrwxr-x. 2 dev dev  21 5月  15 22:14 abc<br/>
+<img src="Linux基础指令_files/Image.png" type="image/png" data-filename="Image.png"/></li>
+</ul>
+</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">进入目录的权限
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333; margin-top: 0; margin-bottom: 0;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">首先我们先创建一个空目录hehe，并使用chmod命令将hehe权限设置成无权限。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">接下来我们先给user加上r：可读权限，但是通过下图我们看到权限不够，说明进入目录不需要读权限</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">然后我们再给user加上w：可写权限，依然是权限不够，说明进入目录也不需要写权限</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">最后我们给user加上x：可执行权限，结果可以进入目录，说明进入目录需要的是可执行权限<br/>
+<img src="Linux基础指令_files/QQ截图20190519213035.png" type="image/png" data-filename="QQ截图20190519213035.png"/></li>
+</ul>
+</li>
+</ul>
+<h2 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 34px; border-bottom: 1px solid #dbdbdb; color: #333;">总结：</h2>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">  1、进入一个目录，对于一个普通用户来说至少需要可执行权限
+  2、如果要在目录中创建一个新的文件时，用户需要可写可执行权限
+  3、如果要在目录中创建文件并显示，用户需要可读可写可执行权限
+</code></pre>
+<h3 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 27px; color: #333;">在目录中执行增删查改等操作时需要的权限：</h3>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333; margin-top: 0; margin-bottom: 0;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">touch<br/>
+<img src="Linux基础指令_files/2.png" type="image/png" data-filename="2.png"/></li>
+</ul>
+<p style="line-height: 160%; box-sizing: content-box; color: #333; margin: 0;">从上图我们看到touch需要的权限是r；</p>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333; margin-top: 0; margin-bottom: 0;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">cd<br/>
+<img src="Linux基础指令_files/cd.png" type="image/png" data-filename="cd.png"/><br/>
+cd需要的权限是x；</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">ls<br/>
+<img src="Linux基础指令_files/ls.png" type="image/png" data-filename="ls.png"/><br/>
+ls需要的权限是r；</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">rm<br/>
+rm需要的权限是w</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">mv<br/>
+mv需要的权限是w</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><center style="display:none !important;visibility:collapse !important;height:0 !important;white-space:nowrap;width:100%;overflow:hidden">%23%20Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4%0A-%20**Linux%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86**%0A%20%20%20%20-%20%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%EF%BC%9A%0A%20%20%20%20%20%20%20%20-%20%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%88%86%E7%94%A8%E6%88%B7%EF%BC%9A%E6%96%87%E4%BB%B6%E6%89%80%E6%9C%89%E8%80%85user%EF%BC%8C%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%BB%84group%2C%20%20%20%E5%85%B6%E4%BB%96%E7%94%A8%E6%88%B7other%3B%0A%20%20%20%20%20%20%20%20-%20%E5%AF%B9%E7%94%A8%E6%88%B7%E5%88%86%E6%93%8D%E4%BD%9C%EF%BC%9A%0A%20%20%20%20%20%20%20%20%20%20%20%20-%20%E5%AF%B9%E6%99%AE%E9%80%9A%E6%96%87%E4%BB%B6%EF%BC%9A%E5%8F%AF%E8%AF%BB%EF%BC%9Ar%20%20%20%E5%8F%AF%E5%86%99%EF%BC%9Aw%20%20%20%E5%8F%AF%E6%89%A7%E8%A1%8C%EF%BC%9Ax%0A%20%20%20%20%20%20%20%20%20%20%20%20-%20%E5%AF%B9%E7%9B%AE%E5%BD%95%EF%BC%9A%E5%8F%AF%E6%B5%8F%E8%A7%88%EF%BC%9Ar%20%20%20%20%E5%8F%AF%E5%88%9B%E5%BB%BA%EF%BC%9Aw%20%20%E5%8F%AF%E8%BF%9B%E5%85%A5%EF%BC%9Ax%0A%20%20%20%20%20%20%20%E4%BE%8B%E5%A6%82%EF%BC%9A%20drwxrwxr-x.%202%20dev%20dev%20%2021%205%E6%9C%88%20%2015%2022%3A14%20abc%0A!%5B46376b6719ee0a69757bd9c27501d84f.png%5D(en-resource%3A%2F%2Fdatabase%2F432%3A0)%0A%20%20%20%20%20%20%20-%20%E8%BF%9B%E5%85%A5%E7%9B%AE%E5%BD%95%E7%9A%84%E6%9D%83%E9%99%90%0A%20%20%20%20%20%20%20%20%20-%20%20%E9%A6%96%E5%85%88%E6%88%91%E4%BB%AC%E5%85%88%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A9%BA%E7%9B%AE%E5%BD%95hehe%EF%BC%8C%E5%B9%B6%E4%BD%BF%E7%94%A8chmod%E5%91%BD%E4%BB%A4%E5%B0%86hehe%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE%E6%88%90%E6%97%A0%E6%9D%83%E9%99%90%E3%80%82%0A%20%20%20%20%20%20%20%20%20-%20%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%88%91%E4%BB%AC%E5%85%88%E7%BB%99user%E5%8A%A0%E4%B8%8Ar%EF%BC%9A%E5%8F%AF%E8%AF%BB%E6%9D%83%E9%99%90%EF%BC%8C%E4%BD%86%E6%98%AF%E9%80%9A%E8%BF%87%E4%B8%8B%E5%9B%BE%E6%88%91%E4%BB%AC%E7%9C%8B%E5%88%B0%E6%9D%83%E9%99%90%E4%B8%8D%E5%A4%9F%EF%BC%8C%E8%AF%B4%E6%98%8E%E8%BF%9B%E5%85%A5%E7%9B%AE%E5%BD%95%E4%B8%8D%E9%9C%80%E8%A6%81%E8%AF%BB%E6%9D%83%E9%99%90%0A%20%20%20%20%20%20%20%20%20-%20%E7%84%B6%E5%90%8E%E6%88%91%E4%BB%AC%E5%86%8D%E7%BB%99user%E5%8A%A0%E4%B8%8Aw%EF%BC%9A%E5%8F%AF%E5%86%99%E6%9D%83%E9%99%90%EF%BC%8C%E4%BE%9D%E7%84%B6%E6%98%AF%E6%9D%83%E9%99%90%E4%B8%8D%E5%A4%9F%EF%BC%8C%E8%AF%B4%E6%98%8E%E8%BF%9B%E5%85%A5%E7%9B%AE%E5%BD%95%E4%B9%9F%E4%B8%8D%E9%9C%80%E8%A6%81%E5%86%99%E6%9D%83%E9%99%90%0A%20%20%20%20%20%20%20%20%20-%20%E6%9C%80%E5%90%8E%E6%88%91%E4%BB%AC%E7%BB%99user%E5%8A%A0%E4%B8%8Ax%EF%BC%9A%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90%EF%BC%8C%E7%BB%93%E6%9E%9C%E5%8F%AF%E4%BB%A5%E8%BF%9B%E5%85%A5%E7%9B%AE%E5%BD%95%EF%BC%8C%E8%AF%B4%E6%98%8E%E8%BF%9B%E5%85%A5%E7%9B%AE%E5%BD%95%E9%9C%80%E8%A6%81%E7%9A%84%E6%98%AF%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90%0A%20%20%20%20%20%20%20%20%20!%5B2b8d142c9412a7d1b3ea15ed8ab246c6.png%5D(en-resource%3A%2F%2Fdatabase%2F434%3A0)%0A%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%23%23%20%E6%80%BB%E7%BB%93%EF%BC%9A%0A%20%20%20%20%20%20%20%20%20%20%20%201%E3%80%81%E8%BF%9B%E5%85%A5%E4%B8%80%E4%B8%AA%E7%9B%AE%E5%BD%95%EF%BC%8C%E5%AF%B9%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E6%9D%A5%E8%AF%B4%E8%87%B3%E5%B0%91%E9%9C%80%E8%A6%81%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90%0A%20%20%20%20%20%20%20%20%20%20%20%202%E3%80%81%E5%A6%82%E6%9E%9C%E8%A6%81%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%AD%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E6%96%87%E4%BB%B6%E6%97%B6%EF%BC%8C%E7%94%A8%E6%88%B7%E9%9C%80%E8%A6%81%E5%8F%AF%E5%86%99%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90%0A%20%20%20%20%20%20%20%20%20%20%20%203%E3%80%81%E5%A6%82%E6%9E%9C%E8%A6%81%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%B9%B6%E6%98%BE%E7%A4%BA%EF%BC%8C%E7%94%A8%E6%88%B7%E9%9C%80%E8%A6%81%E5%8F%AF%E8%AF%BB%E5%8F%AF%E5%86%99%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90%0A%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%23%23%23%20%20%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%AD%E6%89%A7%E8%A1%8C%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9%E7%AD%89%E6%93%8D%E4%BD%9C%E6%97%B6%E9%9C%80%E8%A6%81%E7%9A%84%E6%9D%83%E9%99%90%EF%BC%9A%0A%20%20%20%20%20%20%20-%20touch%0A%20%20%20%20%20%20%20!%5B96b9966d2ed321ca91bfe7e520b20491.png%5D(en-resource%3A%2F%2Fdatabase%2F438%3A0)%0A%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%E4%BB%8E%E4%B8%8A%E5%9B%BE%E6%88%91%E4%BB%AC%E7%9C%8B%E5%88%B0touch%E9%9C%80%E8%A6%81%E7%9A%84%E6%9D%83%E9%99%90%E6%98%AFr%EF%BC%9B%0A%20%20%20%20%20%20%20-%20cd%0A%20%20%20%20%20%20%20!%5B76422d04feff66b0db327abf894453e0.png%5D(en-resource%3A%2F%2Fdatabase%2F440%3A0)%0A%20%20%20%20%20%20%20cd%E9%9C%80%E8%A6%81%E7%9A%84%E6%9D%83%E9%99%90%E6%98%AFx%EF%BC%9B%0A%20%20%20%20%20%20%20-%20ls%0A%20%20%20%20%20%20%20!%5Be1d09123ce2a10c292cbd4e8edf14fe3.png%5D(en-resource%3A%2F%2Fdatabase%2F442%3A0)%0A%20%20%20%20%20%20%20ls%E9%9C%80%E8%A6%81%E7%9A%84%E6%9D%83%E9%99%90%E6%98%AFr%EF%BC%9B%0A%20%20%20%20%20%20%20-%20rm%0A%20%20%20%20%20%20%20rm%E9%9C%80%E8%A6%81%E7%9A%84%E6%9D%83%E9%99%90%E6%98%AFw%0A%20%20%20%20%20%20%20-%20mv%0A%20%20%20%20%20%20%20mv%E9%9C%80%E8%A6%81%E7%9A%84%E6%9D%83%E9%99%90%E6%98%AFw%0A%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%0A%0A</center></span>
+</div></body></html> 
