@@ -6,7 +6,7 @@
 #include<stdlib.h>
 int main(){
   while(1){
-    printf("[dev@localhost ~]$ ");
+    printf("[dev@localhost ~]$ "); 
     fflush(stdout);
     char tmp[1024] = {0};
     scanf("%[^\n]%*c",tmp);
